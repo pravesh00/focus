@@ -7,7 +7,10 @@ import { RoundedButton } from './RoundedButton';
 
 export const Focus = ({addSubject}) => {
   
-    const [tempItem,setTempItem]=useState(null)
+    const [tempItem,setTempItem]=useState(null);
+    
+    
+
   return (
     <View style={styles.container}>
         <View style={styles.titleContainer}>
@@ -16,7 +19,9 @@ export const Focus = ({addSubject}) => {
         <View style={styles.textContainer}>
             <TextInput style={{flex:1}} onSubmitEditing={({nativeEvent})=>{
                 setTempItem(nativeEvent.text)
-            }}></TextInput>
+            }} onChangeText={(text)=>{
+              setTempItem(text)
+                        }}></TextInput>
             <RoundedButton title="+" size={50} style={{alignSelf:'center',marginLeft:10}} onPress={()=>{
                 addSubject(tempItem)
             }}></RoundedButton>

@@ -1,16 +1,47 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Focus } from './components/Focus';
+import { FocusHistory } from './components/FocusHistory';
 import { Timer } from './components/Timer';
 
+const STATUS={
+  COMPLETE:1,
+  CANCELED:2
+}
 
 export default function App() {
-  const [focusSubject,setFocusSubject]=useState(null);
+  const [focusSubject,setFocusSubject]=useState('Gardening');
+  const [focusItems,setFocusItems]=useState([]);
 
+  const addFocusWithStatus=(subject,status)=>{
+      setFocusItems([...focusItems,{subject,status}]);
+  }
+  console.log(focusItems);
+
+  const onClear=()=>{
+
+  }
+
+  
   return (
     <View style={styles.container}>
-      {focusSubject ? (<Timer focusSubject={focusSubject} onTimerEnd={()=>setFocusSubject(null)}></Timer>):
+      {focusSubject ? (<Timer focusSubject={focusSubject} onTimerEnd={()=>{
+        addFocusWithStatus(focusSubject,STATUS.COMPLETE);
+        setFocusSubject(null);
+        
+      }}
+
+      onClearSubject={()=>{
+        addFocusWithStatus(focusSubject,STATUS.CANCELED);
+        setFocusSubject(null);
+      }}
+      ></Timer>):
+      <View>
        <Focus addSubject={setFocusSubject}></Focus>
+       
+       <FocusHistory FocusHistory={focusItems} onClear={onClear}/>
+       </View>
+       
       }
     </View>
    

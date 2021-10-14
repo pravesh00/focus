@@ -6,7 +6,7 @@ import { RoundedButton } from './RoundedButton';
 
 const DEFAULT_TIME=0.1;
 
-export const Timer=({focusSubject ,onTimerEnd})=>{
+export const Timer=({focusSubject ,onTimerEnd, onClearSubject})=>{
     const [time,setTime] =useState(DEFAULT_TIME);
     const [isStarted,setisStarted]=useState(false);
     const [progress,setProgress] =useState(1);
@@ -67,7 +67,12 @@ export const Timer=({focusSubject ,onTimerEnd})=>{
             } style={{justifyContent:'center', alignContent:'center', alignSelf: 'center',}}></RoundedButton>:<RoundedButton title='Start' size={120} onPress={()=>
                 setisStarted(true)
             } style={{justifyContent:'center', alignContent:'center', alignSelf: 'center',}}></RoundedButton>}
+            <View style={{justifyContent:'center',alignSelf:'center', paddingTop:105, flex:1}}>
+                <RoundedButton title='Cancel' size={50} onPress={()=>onClearSubject()} style={{width:100, borderColor:'red', color:'red',borderWidth:0}} textStyle={{color:'red'}}></RoundedButton>
+            </View>
+        
         </View>
+        
     );
 }
 
@@ -93,5 +98,11 @@ const styles = StyleSheet.create({
         alignContent:'center',
         textAlign:'center',
         marginTop:10
+    },
+    cancel:{
+        
+        justifyContent:'center',
+        alignSelf:'center',
+        paddingTop:30
     }
 });
