@@ -10,11 +10,11 @@ const STATUS={
 }
 
 export default function App() {
-  const [focusSubject,setFocusSubject]=useState(null);
+  const [focusSubject,setFocusSubject]=useState('H');
   const [focusItems,setFocusItems]=useState([]);
 
   const addFocusWithStatus=(subject,status)=>{
-      setFocusItems([...focusItems,{subject,status}]);
+      setFocusItems([...focusItems,{subject:subject,status:status}]);
   }
   console.log(focusItems);
 
@@ -36,9 +36,8 @@ export default function App() {
         setFocusSubject(null);
       }}
       ></Timer>):
-      <View>
-       <Focus addSubject={setFocusSubject}></Focus>
-       
+      <View style={{flexDirection:'column',flex:1}}>
+       <Focus addSubject={setFocusSubject} ></Focus>
        <FocusHistory FocusHistory={focusItems} onClear={onClear}/>
        </View>
        

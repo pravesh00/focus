@@ -22,18 +22,19 @@ export const FocusHistory=({FocusHistory, onClear})=>{
     }   
 
     return(
-        <SafeAreaView style={{}}>
+        <View >
             <Text style={{alignItems:'center',textAlign:'center', fontSize:15,color:'white',paddingTop:20}}>These are the things you focused on</Text>
-            {!!FocusHistory.length && 
-                <FlatList style={{}}
-                    contentContainerStyle={{flex:1, alignItems:'center'}}
+            
+                <FlatList 
+                    contentContainerStyle={{alignItems:'center'}}
                     data={FocusHistory}
                     renderItem={HistoryItem}
+                    keyExtractor={(item, index) => index.toString()}
                 >
 
                 </FlatList>
-            }
-        </SafeAreaView>
+            
+        </View>
     );
 
 }

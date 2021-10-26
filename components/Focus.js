@@ -31,7 +31,6 @@ export const Focus = ({addSubject}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor:'darkblue'
   },
   titleContainer:{
@@ -45,5 +44,6 @@ const styles = StyleSheet.create({
   },
   textContainer:{
     flexDirection:'row',
+    height: 50
   }
 });
