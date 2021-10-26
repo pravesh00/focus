@@ -33,6 +33,8 @@ cd op
 
 * `CountDown.js`: It contains the countdown app which intimates the time left in completion of task and handles user response accordingly.
 
+* `Timer.js`: It contains the timer component of the app.
+
 * `RoundedButton.js`: It is a utility component to provide rounded button across the application.
 
 
