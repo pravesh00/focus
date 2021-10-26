@@ -10,7 +10,7 @@ const STATUS={
 }
 
 export default function App() {
-  const [focusSubject,setFocusSubject]=useState('H');
+  const [focusSubject,setFocusSubject]=useState(null);
   const [focusItems,setFocusItems]=useState([]);
 
   const addFocusWithStatus=(subject,status)=>{
